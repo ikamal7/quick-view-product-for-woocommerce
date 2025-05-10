@@ -14,6 +14,7 @@
  * WC tested up to: 9.8.3
  * License: GPL-2.0-or-later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ * Require Plugins: woocommerce
  *
  * @package Quick_View_Product_For_WooCommerce
  */
@@ -26,8 +27,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Check if WooCommerce is active
  */
-if ( ! in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ), true ) ) {
-	return;
+if (!class_exists('WooCommerce')) {
+    add_action('admin_notices', function(){
+
+        echo '<div class="notice notice-error">
+            <p>'. __('Quick View Product for WooCommerce requires WooCommerce to be installed and active.', 'quick-view-product-for-woocommerce') .'</p>
+        </div>';
+	});
+
+    return;
 }
 
 // Define plugin constants.
