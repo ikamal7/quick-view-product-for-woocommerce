@@ -2,10 +2,10 @@
 /**
  * Main Plugin class for Quick View Product for WooCommerce
  *
- * @package Quick_View_Product_For_WooCommerce
+ * @package QuickLook
  */
 
-namespace QVPWC;
+namespace QuickLook;
 
 /**
  * Main plugin class to bootstrap the plugin
@@ -76,7 +76,7 @@ class Plugin {
 		}
 
 		// Add settings link to plugins page.
-		add_filter( 'plugin_action_links_' . QVPWC_PLUGIN_BASENAME, array( $this, 'add_settings_link' ) );
+		add_filter( 'plugin_action_links_' . QL_PLUGIN_BASENAME, array( $this, 'add_settings_link' ) );
 	}
 
 	/**
@@ -86,7 +86,7 @@ class Plugin {
 	 * @return array Modified plugin action links.
 	 */
 	public function add_settings_link( $links ) {
-		$settings_link = '<a href="' . admin_url( 'admin.php?page=wc-settings&tab=products&section=qvpwc' ) . '">' . __( 'Settings', 'quick-view-product-for-woocommerce' ) . '</a>';
+		$settings_link = '<a href="' . admin_url( 'admin.php?page=wc-settings&tab=products&section=qvpwc' ) . '">' . __( 'Settings', 'quicklook' ) . '</a>';
 		array_unshift( $links, $settings_link );
 		return $links;
 	}

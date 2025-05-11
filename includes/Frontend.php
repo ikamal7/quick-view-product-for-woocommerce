@@ -2,10 +2,10 @@
 /**
  * Frontend class for Quick View Product for WooCommerce
  *
- * @package Quick_View_Product_For_WooCommerce
+ * @package QuickLook
  */
 
-namespace QVPWC;
+namespace QuickLook;
 
 /**
  * Class to handle frontend display
@@ -84,7 +84,7 @@ class Frontend {
 		
 		// Output button HTML with accessibility attributes
 		/* translators: %s: Product name */
-		echo '<a href="#" class="qvpwc-quick-view-button button" data-product-id="' . esc_attr( $product_id ) . '" data-nonce="' . esc_attr( $nonce ) . '" aria-label="' . sprintf( esc_attr__( 'Quick view for %s', 'quick-view-product-for-woocommerce' ), esc_attr( $product->get_name() ) ) . '">' . esc_html( $button_text ) . '</a>';
+		echo '<a href="#" class="qvpwc-quick-view-button button" data-product-id="' . esc_attr( $product_id ) . '" data-nonce="' . esc_attr( $nonce ) . '" aria-label="' . sprintf( esc_attr__( 'Quick view for %s', 'quicklook' ), esc_attr( $product->get_name() ) ) . '">' . esc_html( $button_text ) . '</a>';
 	}
 
 	/**

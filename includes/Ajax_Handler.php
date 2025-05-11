@@ -2,10 +2,10 @@
 /**
  * Ajax Handler class for Quick View Product for WooCommerce
  *
- * @package Quick_View_Product_For_WooCommerce
+ * @package QuickLook
  */
 
-namespace QVPWC;
+namespace QuickLook;
 
 /**
  * Class to handle AJAX requests for quick view
@@ -46,12 +46,12 @@ class Ajax_Handler implements Ajax_Interface {
 	public function handle_quick_view_request() {
 		// Check nonce for security
 		if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'qvpwc_nonce' ) ) {
-			wp_send_json_error( array( 'message' => __( 'Security check failed', 'quick-view-product-for-woocommerce' ) ) );
+			wp_send_json_error( array( 'message' => __( 'Security check failed', 'quicklook' ) ) );
 		}
 
 		// Check if product ID is provided
 		if ( ! isset( $_POST['product_id'] ) || empty( $_POST['product_id'] ) ) {
-			wp_send_json_error( array( 'message' => __( 'Product ID is required', 'quick-view-product-for-woocommerce' ) ) );
+			wp_send_json_error( array( 'message' => __( 'Product ID is required', 'quicklook' ) ) );
 		}
 
 		// Get product ID
@@ -64,7 +64,7 @@ class Ajax_Handler implements Ajax_Interface {
 		if ( ! empty( $product_data ) ) {
 			wp_send_json_success( $product_data );
 		} else {
-			wp_send_json_error( array( 'message' => __( 'Product not found', 'quick-view-product-for-woocommerce' ) ) );
+			wp_send_json_error( array( 'message' => __( 'Product not found', 'quicklook' ) ) );
 		}
 	}
 
@@ -170,10 +170,10 @@ class Ajax_Handler implements Ajax_Interface {
 							}
 						} else {
 							// Out of stock message
-							echo '<p class="qvpwc-out-of-stock">' . esc_html__( 'This product is currently out of stock and unavailable.', 'quick-view-product-for-woocommerce' ) . '</p>';
+							echo '<p class="qvpwc-out-of-stock">' . esc_html__( 'This product is currently out of stock and unavailable.', 'quicklook' ) . '</p>';
 						}
 						?>
-						<a href="<?php echo esc_url( $product_url ); ?>" class="qvpwc-view-details button"><?php esc_html_e( 'View Details', 'quick-view-product-for-woocommerce' ); ?></a>
+						<a href="<?php echo esc_url( $product_url ); ?>" class="qvpwc-view-details button"><?php esc_html_e( 'View Details', 'quicklook' ); ?></a>
 					</div>
 				</div>
 			</div>

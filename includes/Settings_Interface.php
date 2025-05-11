@@ -2,10 +2,10 @@
 /**
  * Settings Interface for Quick View Product for WooCommerce
  *
- * @package Quick_View_Product_For_WooCommerce
+ * @package QuickLook
  */
 
-namespace QVPWC;
+namespace QuickLook;
 
 /**
  * Interface for settings management

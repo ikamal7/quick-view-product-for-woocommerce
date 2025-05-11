@@ -1,7 +1,7 @@
 /**
  * Quick View Product for WooCommerce - Frontend Scripts
  *
- * @package Quick_View_Product_For_WooCommerce
+ * @package QuickLook
  */
 
 (function($) {
@@ -10,7 +10,7 @@
     /**
      * Quick View functionality
      */
-    var QVPWC_QuickView = {
+    var QuickLook_QuickView = {
         /**
          * Initialize the quick view functionality
          */
@@ -50,7 +50,7 @@
             $('body').addClass('qvpwc-modal-open');
 
             // Trap focus in modal
-            QVPWC_QuickView.trapFocus($modal);
+            QuickLook_QuickView.trapFocus($modal);
 
             // AJAX request to get product data
             $.ajax({
@@ -80,13 +80,13 @@
                         }, 100);
                     } else {
                         // Error handling
-                        QVPWC_QuickView.closeQuickView();
+                        QuickLook_QuickView.closeQuickView();
                         console.error('Error loading product data:', response.data.message);
                     }
                 },
                 error: function(xhr, status, error) {
                     // Error handling
-                    QVPWC_QuickView.closeQuickView();
+                    QuickLook_QuickView.closeQuickView();
                     console.error('AJAX error:', error);
                 }
             });
@@ -119,7 +119,7 @@
          */
         handleEscKey: function(e) {
             if (e.keyCode === 27) { // ESC key
-                QVPWC_QuickView.closeQuickView();
+                QuickLook_QuickView.closeQuickView();
             }
         },
 
@@ -255,7 +255,7 @@
 
     // Initialize on document ready
     $(document).ready(function() {
-        QVPWC_QuickView.init();
+        QuickLook_QuickView.init();
     });
 
 })(jQuery);

@@ -1,8 +1,8 @@
 <?php
 /**
- * Autoloader for Quick View Product for WooCommerce
+ * Autoloader for QuickLook
  *
- * @package Quick_View_Product_For_WooCommerce
+ * @package QuickLook
  */
 
 // Exit if accessed directly.
@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 spl_autoload_register( function( $class ) {
 	// Project-specific namespace prefix.
-	$prefix = 'QVPWC\\';
+	$prefix = 'QuickLook\\';
 
 	// Does the class use the namespace prefix?
 	$len = strlen( $prefix );
@@ -33,7 +33,7 @@ spl_autoload_register( function( $class ) {
 	$file = str_replace( '\\', '/', $relative_class ) . '.php';
 
 	// Get the full path to the file.
-	$path = QVPWC_PLUGIN_DIR . 'includes/' . $file;
+	$path = QL_PLUGIN_DIR . 'includes/' . $file;
 
 	// If the file exists, require it.
 	if ( file_exists( $path ) ) {

@@ -2,10 +2,10 @@
 /**
  * Settings class for Quick View Product for WooCommerce
  *
- * @package Quick_View_Product_For_WooCommerce
+ * @package QuickLook
  */
 
-namespace QVPWC;
+namespace QuickLook;
 
 /**
  * Class to manage plugin settings
@@ -45,7 +45,7 @@ class Settings implements Settings_Interface {
 	 * @return array Modified sections.
 	 */
 	public function add_section( $sections ) {
-		$sections['qvpwc'] = __( 'Quick View', 'quick-view-product-for-woocommerce' );
+		$sections['qvpwc'] = __( 'Quick View', 'quicklook' );
 		return $sections;
 	}
 
@@ -64,37 +64,37 @@ class Settings implements Settings_Interface {
 
 		$quick_view_settings = array(
 			array(
-				'title' => __( 'Quick View Settings', 'quick-view-product-for-woocommerce' ),
+				'title' => __( 'Quick View Settings', 'quicklook' ),
 				'type'  => 'title',
-				'desc'  => __( 'Configure the Quick View button and modal display.', 'quick-view-product-for-woocommerce' ),
+				'desc'  => __( 'Configure the Quick View button and modal display.', 'quicklook' ),
 				'id'    => 'qvpwc_options',
 			),
 			array(
-				'title'   => __( 'Enable/Disable', 'quick-view-product-for-woocommerce' ),
-				'desc'    => __( 'Enable Quick View functionality', 'quick-view-product-for-woocommerce' ),
+				'title'   => __( 'Enable/Disable', 'quicklook' ),
+				'desc'    => __( 'Enable Quick View functionality', 'quicklook' ),
 				'id'      => 'qvpwc_enabled',
 				'default' => 'yes',
 				'type'    => 'checkbox',
 			),
 			array(
-				'title'    => __( 'Button Text', 'quick-view-product-for-woocommerce' ),
-				'desc'     => __( 'Text displayed on the Quick View button', 'quick-view-product-for-woocommerce' ),
+				'title'    => __( 'Button Text', 'quicklook' ),
+				'desc'     => __( 'Text displayed on the Quick View button', 'quicklook' ),
 				'id'       => 'qvpwc_button_text',
 				'default'  => 'Quick View',
 				'type'     => 'text',
 				'desc_tip' => true,
 			),
 			array(
-				'title'    => __( 'Button Position', 'quick-view-product-for-woocommerce' ),
-				'desc'     => __( 'Where to display the Quick View button', 'quick-view-product-for-woocommerce' ),
+				'title'    => __( 'Button Position', 'quicklook' ),
+				'desc'     => __( 'Where to display the Quick View button', 'quicklook' ),
 				'id'       => 'qvpwc_button_position',
 				'default'  => 'after_add_to_cart',
 				'type'     => 'select',
 				'options'  => array(
-					'after_title'       => __( 'After product title', 'quick-view-product-for-woocommerce' ),
-					'after_price'       => __( 'After product price', 'quick-view-product-for-woocommerce' ),
-					'after_add_to_cart' => __( 'After add to cart button', 'quick-view-product-for-woocommerce' ),
-					'before_add_to_cart' => __( 'Before add to cart button', 'quick-view-product-for-woocommerce' ),
+					'after_title'       => __( 'After product title', 'quicklook' ),
+					'after_price'       => __( 'After product price', 'quicklook' ),
+					'after_add_to_cart' => __( 'After add to cart button', 'quicklook' ),
+					'before_add_to_cart' => __( 'Before add to cart button', 'quicklook' ),
 				),
 				'desc_tip' => true,
 			),

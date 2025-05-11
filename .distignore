@@ -1,5 +1,7 @@
+.distignore
 .git
 .gitignore
+.gitattributes
 node_modules
 composer.json
 composer.lock
@@ -10,4 +12,3 @@ README.md
 tests/
 .env
 .DS_Store
-.disignore
