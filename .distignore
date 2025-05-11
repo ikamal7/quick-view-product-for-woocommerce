@@ -12,3 +12,4 @@ README.md
 tests/
 .env
 .DS_Store
+README.md
