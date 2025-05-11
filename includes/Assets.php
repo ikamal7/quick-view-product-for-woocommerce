@@ -51,17 +51,17 @@ class Assets {
 		// Enqueue CSS
 		wp_enqueue_style(
 			'qvpwc-styles',
-			QuickLook_PLUGIN_URL . 'assets/css/quick-view.css',
+			QL_PLUGIN_URL . 'assets/css/quick-view.css',
 			array(),
-			QuickLook_VERSION
+			QL_VERSION
 		);
 
 		// Enqueue JS
 		wp_enqueue_script(
 			'qvpwc-scripts',
-			QuickLook_PLUGIN_URL . 'assets/js/quick-view.js',
+			QL_PLUGIN_URL . 'assets/js/quick-view.js',
 			array( 'jquery' ),
-			QuickLook_VERSION,
+			QL_VERSION,
 			true
 		);
 
