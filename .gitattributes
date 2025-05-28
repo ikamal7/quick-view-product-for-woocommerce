@@ -1,0 +1,12 @@
+.gitignore export-ignore
+.gitattributes export-ignore
+.github export-ignore
+.vscode export-ignore
+.editorconfig export-ignore
+.phpcs.xml export-ignore
+.phpcs.xml.dist export-ignore
+.phpcs.xml.dist.bak export-ignore
+.phpcs.xml.dist.bak.bak export-ignore
+.phpcs.xml.dist.bak.bak.bak export-ignore
+README.md export-ignore
+LICENSE export-ignore
