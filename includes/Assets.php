@@ -1,11 +1,11 @@
 <?php
 /**
- * Assets class for Quick View Product for WooCommerce
+ * Assets class for QuickLook for WooCommerce
  *
- * @package QuickLook
+ * @package QuickLookForWooCommerce
  */
 
-namespace QuickLook;
+namespace QuickLookForWooCommerce;
 
 /**
  * Class to manage CSS and JS assets
@@ -50,31 +50,31 @@ class Assets {
 
 		// Enqueue CSS
 		wp_enqueue_style(
-			'qvpwc-styles',
-			QL_PLUGIN_URL . 'assets/css/quick-view.css',
+			'quicklook-wc-styles',
+			QUICKLOOK_WC_PLUGIN_URL . 'assets/css/quick-view.css',
 			array(),
-			QL_VERSION
+			QUICKLOOK_WC_VERSION
 		);
 
 		// Enqueue JS
 		wp_enqueue_script(
-			'qvpwc-scripts',
-			QL_PLUGIN_URL . 'assets/js/quick-view.js',
+			'quicklook-wc-scripts',
+			QUICKLOOK_WC_PLUGIN_URL . 'assets/js/quick-view.js',
 			array( 'jquery' ),
-			QL_VERSION,
+			QUICKLOOK_WC_VERSION,
 			true
 		);
 
 		// Localize script with AJAX URL and nonce
 		wp_localize_script(
-			'qvpwc-scripts',
-			'qvpwc_params',
+			'quicklook-wc-scripts',
+			'quicklook_wc_params',
 			array(
 				'ajax_url' => admin_url( 'admin-ajax.php' ),
-				'nonce'    => wp_create_nonce( 'qvpwc_nonce' ),
+				'nonce'    => wp_create_nonce( 'quicklook_wc_nonce' ),
 				'checkout_url' => wc_get_checkout_url(),
-				'i18n_added_to_cart' => __( 'Product added to cart successfully!', 'quicklook' ),
-				'i18n_add_to_cart_error' => __( 'Error adding product to cart. Please try again.', 'quicklook' ),
+				'i18n_added_to_cart' => __( 'Product added to cart successfully!', 'quicklook-for-woocommerce' ),
+				'i18n_add_to_cart_error' => __( 'Error adding product to cart. Please try again.', 'quicklook-for-woocommerce' ),
 			)
 		);
 	}

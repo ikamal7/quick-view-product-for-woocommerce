@@ -1,11 +1,11 @@
 <?php
 /**
- * Frontend class for Quick View Product for WooCommerce
+ * Frontend class for QuickLook for WooCommerce
  *
- * @package QuickLook
+ * @package QuickLookForWooCommerce
  */
 
-namespace QuickLook;
+namespace QuickLookForWooCommerce;
 
 /**
  * Class to handle frontend display
@@ -80,11 +80,11 @@ class Frontend {
 		$product_id = $product->get_id();
 		
 		// Create nonce for security
-		$nonce = wp_create_nonce( 'qvpwc_nonce' );
+		$nonce = wp_create_nonce( 'quicklook_wc_nonce' );
 		
 		// Output button HTML with accessibility attributes
 		/* translators: %s: Product name */
-		echo '<a href="#" class="qvpwc-quick-view-button button" data-product-id="' . esc_attr( $product_id ) . '" data-nonce="' . esc_attr( $nonce ) . '" aria-label="' . sprintf( esc_attr__( 'Quick view for %s', 'quicklook' ), esc_attr( $product->get_name() ) ) . '">' . esc_html( $button_text ) . '</a>';
+		echo '<a href="#" class="quicklook-wc-quick-view-button button" data-product-id="' . esc_attr( $product_id ) . '" data-nonce="' . esc_attr( $nonce ) . '" aria-label="' . sprintf( esc_attr__( 'Quick view for %s', 'quicklook-for-woocommerce' ), esc_attr( $product->get_name() ) ) . '">' . esc_html( $button_text ) . '</a>';
 	}
 
 	/**
@@ -107,13 +107,13 @@ class Frontend {
 		
 		// Modal container HTML with accessibility attributes
 		?>
-		<div id="qvpwc-modal" class="qvpwc-modal" aria-hidden="true" role="dialog" aria-labelledby="qvpwc-modal-title" tabindex="-1">
-			<div class="qvpwc-modal-overlay"></div>
-			<div class="qvpwc-modal-wrapper">
-				<div class="qvpwc-modal-container">
+		<div id="quicklook-wc-modal" class="quicklook-wc-modal" aria-hidden="true" role="dialog" aria-labelledby="quicklook-wc-modal-title" tabindex="-1">
+			<div class="quicklook-wc-modal-overlay"></div>
+			<div class="quicklook-wc-modal-wrapper">
+				<div class="quicklook-wc-modal-container">
 					<!-- Content will be loaded via AJAX -->
-					<div class="qvpwc-modal-loading">
-						<div class="qvpwc-spinner"></div>
+					<div class="quicklook-wc-modal-loading">
+						<div class="quicklook-wc-spinner"></div>
 					</div>
 				</div>
 			</div>

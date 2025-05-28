@@ -1,11 +1,11 @@
 <?php
 /**
- * Settings Interface for Quick View Product for WooCommerce
+ * Settings Interface for QuickLook for WooCommerce
  *
- * @package QuickLook
+ * @package QuickLookForWooCommerce
  */
 
-namespace QuickLook;
+namespace QuickLookForWooCommerce;
 
 /**
  * Interface for settings management

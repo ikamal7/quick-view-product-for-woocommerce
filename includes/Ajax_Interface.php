@@ -1,11 +1,11 @@
 <?php
 /**
- * Ajax Interface for Quick View Product for WooCommerce
+ * Ajax Interface for QuickLook for WooCommerce
  *
- * @package QuickLook
+ * @package QuickLookForWooCommerce
  */
 
-namespace QuickLook;
+namespace QuickLookForWooCommerce;
 
 /**
  * Interface for AJAX operations

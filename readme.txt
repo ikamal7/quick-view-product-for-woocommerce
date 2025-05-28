@@ -1,4 +1,4 @@
-=== QuickLook - Quick View Product For WooCommerce ===
+=== QuickLook for WooCommerce ===
 Contributors: ikamal
 Donate link: https://kamalhosen.com
 Tags: woocommerce, quick view, product, popup, modal
@@ -15,7 +15,7 @@ A lightweight plugin adding a Quick View button to WooCommerce product listings,
 
 == Description ==
 
-QuickLook enhances your online store by allowing customers to quickly preview product details without leaving the shop or category page. This improves the shopping experience and can lead to increased conversions.
+QuickLook for WooCommerce enhances your online store by allowing customers to quickly preview product details without leaving the shop or category page. This improves the shopping experience and can lead to increased conversions.
 
 = Features =
 
@@ -31,7 +31,7 @@ QuickLook enhances your online store by allowing customers to quickly preview pr
 
 == Installation ==
 
-1. Upload the `quicklook` folder to the `/wp-content/plugins/` directory
+1. Upload the `quicklook-for-woocommerce` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Go to WooCommerce > Settings > Products > Quick View to configure the plugin
 

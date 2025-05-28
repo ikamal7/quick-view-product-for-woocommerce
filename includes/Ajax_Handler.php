@@ -1,11 +1,11 @@
 <?php
 /**
- * Ajax Handler class for Quick View Product for WooCommerce
+ * Ajax Handler class for QuickLook for WooCommerce
  *
- * @package QuickLook
+ * @package QuickLookForWooCommerce
  */
 
-namespace QuickLook;
+namespace QuickLookForWooCommerce;
 
 /**
  * Class to handle AJAX requests for quick view
@@ -34,8 +34,8 @@ class Ajax_Handler implements Ajax_Interface {
 	 */
 	public function register_ajax_hooks() {
 		// Register AJAX actions for both logged in and non-logged in users
-		add_action( 'wp_ajax_qvpwc_quick_view', array( $this, 'handle_quick_view_request' ) );
-		add_action( 'wp_ajax_nopriv_qvpwc_quick_view', array( $this, 'handle_quick_view_request' ) );
+		add_action( 'wp_ajax_quicklook_wc_quick_view', array( $this, 'handle_quick_view_request' ) );
+		add_action( 'wp_ajax_nopriv_quicklook_wc_quick_view', array( $this, 'handle_quick_view_request' ) );
 	}
 
 	/**
@@ -45,13 +45,13 @@ class Ajax_Handler implements Ajax_Interface {
 	 */
 	public function handle_quick_view_request() {
 		// Check nonce for security
-		if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'qvpwc_nonce' ) ) {
-			wp_send_json_error( array( 'message' => __( 'Security check failed', 'quicklook' ) ) );
+		if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'quicklook_wc_nonce' ) ) {
+			wp_send_json_error( array( 'message' => __( 'Security check failed', 'quicklook-for-woocommerce' ) ) );
 		}
 
 		// Check if product ID is provided
 		if ( ! isset( $_POST['product_id'] ) || empty( $_POST['product_id'] ) ) {
-			wp_send_json_error( array( 'message' => __( 'Product ID is required', 'quicklook' ) ) );
+			wp_send_json_error( array( 'message' => __( 'Product ID is required', 'quicklook-for-woocommerce' ) ) );
 		}
 
 		// Get product ID
@@ -64,7 +64,7 @@ class Ajax_Handler implements Ajax_Interface {
 		if ( ! empty( $product_data ) ) {
 			wp_send_json_success( $product_data );
 		} else {
-			wp_send_json_error( array( 'message' => __( 'Product not found', 'quicklook' ) ) );
+			wp_send_json_error( array( 'message' => __( 'Product not found', 'quicklook-for-woocommerce' ) ) );
 		}
 	}
 
@@ -114,23 +114,23 @@ class Ajax_Handler implements Ajax_Interface {
 
 		// Modal HTML structure
 		?>
-		<div class="qvpwc-modal-content">
-			<div class="qvpwc-modal-close">&times;</div>
-			<div class="qvpwc-modal-body">
-				<div class="qvpwc-product-image">
+		<div class="quicklook-wc-modal-content">
+			<div class="quicklook-wc-modal-close">&times;</div>
+			<div class="quicklook-wc-modal-body">
+				<div class="quicklook-wc-product-image">
 					<img src="<?php echo esc_url( $product_image ); ?>" alt="<?php echo esc_attr( $product_title ); ?>" />
 				</div>
-				<div class="qvpwc-product-details">
-					<h2 class="qvpwc-product-title"><?php echo esc_html( $product_title ); ?></h2>
-					<div class="qvpwc-product-price"><?php echo wp_kses_post( $product_price ); ?></div>
+				<div class="quicklook-wc-product-details">
+					<h2 class="quicklook-wc-product-title"><?php echo esc_html( $product_title ); ?></h2>
+					<div class="quicklook-wc-product-price"><?php echo wp_kses_post( $product_price ); ?></div>
 					
 					<?php if ( ! empty( $product_desc ) ) : ?>
-					<div class="qvpwc-product-description">
+					<div class="quicklook-wc-product-description">
 						<?php echo wp_kses_post( $product_desc ); ?>
 					</div>
 					<?php endif; ?>
 					
-					<div class="qvpwc-product-actions">
+					<div class="quicklook-wc-product-actions">
 						<?php 
 						// Add to cart form
 						if ( $product->is_in_stock() ) {
@@ -170,10 +170,10 @@ class Ajax_Handler implements Ajax_Interface {
 							}
 						} else {
 							// Out of stock message
-							echo '<p class="qvpwc-out-of-stock">' . esc_html__( 'This product is currently out of stock and unavailable.', 'quicklook' ) . '</p>';
+							echo '<p class="quicklook-wc-out-of-stock">' . esc_html__( 'This product is currently out of stock and unavailable.', 'quicklook-for-woocommerce' ) . '</p>';
 						}
 						?>
-						<a href="<?php echo esc_url( $product_url ); ?>" class="qvpwc-view-details button"><?php esc_html_e( 'View Details', 'quicklook' ); ?></a>
+						<a href="<?php echo esc_url( $product_url ); ?>" class="quicklook-wc-view-details button"><?php esc_html_e( 'View Details', 'quicklook-for-woocommerce' ); ?></a>
 					</div>
 				</div>
 			</div>
@@ -184,6 +184,6 @@ class Ajax_Handler implements Ajax_Interface {
 		$html = ob_get_clean();
 
 		// Allow filtering of modal HTML
-		return apply_filters( 'qvpwc_modal_html', $html, $product );
+		return apply_filters( 'quicklook_wc_modal_html', $html, $product );
 	}
 }

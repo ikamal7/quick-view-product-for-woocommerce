@@ -16,8 +16,8 @@
          */
         init: function() {
             // Event listeners
-            $(document).on('click', '.qvpwc-quick-view-button', this.openQuickView);
-            $(document).on('click', '.qvpwc-modal-close, .qvpwc-modal-overlay', this.closeQuickView);
+            $(document).on('click', '.quicklook-wc-quick-view-button', this.openQuickView);
+            $(document).on('click', '.quicklook-wc-modal-close, .quicklook-wc-modal-overlay', this.closeQuickView);
             $(document).on('keyup', this.handleEscKey);
 
             // Handle variation form events
@@ -25,7 +25,7 @@
             $(document).on('reset_data', 'form.variations_form', this.resetVariation);
 
             // Handle add to cart in modal
-            $(document).on('submit', '.qvpwc-modal form.cart', this.handleAddToCart);
+            $(document).on('submit', '.quicklook-wc-modal form.cart', this.handleAddToCart);
         },
 
         /**
@@ -39,35 +39,35 @@
             var $button = $(this);
             var productId = $button.data('product-id');
             var nonce = $button.data('nonce');
-            var $modal = $('#qvpwc-modal');
+            var $modal = $('#quicklook-wc-modal');
 
             // Show loading spinner
-            $modal.find('.qvpwc-modal-loading').show();
-            $modal.find('.qvpwc-modal-content').remove();
+            $modal.find('.quicklook-wc-modal-loading').show();
+            $modal.find('.quicklook-wc-modal-content').remove();
 
             // Show modal
             $modal.fadeIn(300);
-            $('body').addClass('qvpwc-modal-open');
+            $('body').addClass('quicklook-wc-modal-open');
 
             // Trap focus in modal
             QuickLook_QuickView.trapFocus($modal);
 
             // AJAX request to get product data
             $.ajax({
-                url: qvpwc_params.ajax_url,
+                url: quicklook_wc_params.ajax_url,
                 type: 'POST',
                 data: {
-                    action: 'qvpwc_quick_view',
+                    action: 'quicklook-wc_quick_view',
                     product_id: productId,
                     nonce: nonce
                 },
                 success: function(response) {
                     if (response.success) {
                         // Hide loading spinner
-                        $modal.find('.qvpwc-modal-loading').hide();
+                        $modal.find('.quicklook-wc-modal-loading').hide();
                         
                         // Append modal content
-                        $modal.find('.qvpwc-modal-container').append(response.data.modal_html);
+                        $modal.find('.quicklook-wc-modal-container').append(response.data.modal_html);
                         
                         // Initialize WooCommerce scripts
                         if (typeof $.fn.wc_variation_form !== 'undefined') {
@@ -76,7 +76,7 @@
                         
                         // Set focus to close button
                         setTimeout(function() {
-                            $modal.find('.qvpwc-modal-close').focus();
+                            $modal.find('.quicklook-wc-modal-close').focus();
                         }, 100);
                     } else {
                         // Error handling
@@ -102,13 +102,13 @@
                 e.preventDefault();
             }
 
-            var $modal = $('#qvpwc-modal');
+            var $modal = $('#quicklook-wc-modal');
             $modal.fadeOut(200);
-            $('body').removeClass('qvpwc-modal-open');
+            $('body').removeClass('quicklook-wc-modal-open');
 
             // Return focus to the last clicked button
             setTimeout(function() {
-                $('.qvpwc-quick-view-button[data-product-id="' + $modal.attr('data-product-id') + '"]').focus();
+                $('.quicklook-wc-quick-view-button[data-product-id="' + $modal.attr('data-product-id') + '"]').focus();
             }, 200);
         },
 
@@ -130,7 +130,7 @@
          */
         trapFocus: function($modal) {
             // Save current product ID to return focus later
-            var productId = $modal.find('.qvpwc-quick-view-button').data('product-id');
+            var productId = $modal.find('.quicklook-wc-quick-view-button').data('product-id');
             $modal.attr('data-product-id', productId);
 
             // Find all focusable elements
@@ -166,7 +166,7 @@
          */
         foundVariation: function(e, variation) {
             if (variation.image && variation.image.src) {
-                var $modalImage = $(this).closest('.qvpwc-modal-content').find('.qvpwc-product-image img');
+                var $modalImage = $(this).closest('.quicklook-wc-modal-content').find('.quicklook-wc-product-image img');
                 var srcset = variation.image.srcset ? variation.image.srcset : '';
                 
                 $modalImage.attr('src', variation.image.src);
@@ -182,8 +182,8 @@
          */
         resetVariation: function(e) {
             var $form = $(this);
-            var $modalContent = $form.closest('.qvpwc-modal-content');
-            var $modalImage = $modalContent.find('.qvpwc-product-image img');
+            var $modalContent = $form.closest('.quicklook-wc-modal-content');
+            var $modalImage = $modalContent.find('.quicklook-wc-product-image img');
             var originalImage = $modalImage.attr('data-original-src');
             
             if (!originalImage) {
@@ -204,8 +204,8 @@
             e.preventDefault();
             
             var $form = $(this);
-            var $modal = $('#qvpwc-modal');
-            var $productActions = $form.closest('.qvpwc-product-actions');
+            var $modal = $('#quicklook-wc-modal');
+            var $productActions = $form.closest('.quicklook-wc-product-actions');
             
             // Show loading state
             $form.find('button[type="submit"]').addClass('loading');
@@ -228,12 +228,12 @@
                     
                     // Show success message
                     if ($productActions.find('.woocommerce-message').length === 0) {
-                        $productActions.prepend('<div class="woocommerce-message" role="alert">' + qvpwc_params.i18n_added_to_cart + '</div>');
+                        $productActions.prepend('<div class="woocommerce-message" role="alert">' + quicklook_wc_params.i18n_added_to_cart + '</div>');
                     }
                     
                     // Add checkout button if it doesn't exist
-                    if ($productActions.find('.qvpwc-checkout-button').length === 0) {
-                        $productActions.append('<a href="' + qvpwc_params.checkout_url + '" class="qvpwc-checkout-button button alt">Proceed to Checkout</a>');
+                    if ($productActions.find('.quicklook-wc-checkout-button').length === 0) {
+                        $productActions.append('<a href="' + quicklook_wc_params.checkout_url + '" class="quicklook-wc-checkout-button button alt">Proceed to Checkout</a>');
                     }
                 },
                 error: function() {
@@ -242,7 +242,7 @@
                     
                     // Show error message
                     if ($form.find('.woocommerce-error').length === 0) {
-                        $form.prepend('<div class="woocommerce-error">' + qvpwc_params.i18n_add_to_cart_error + '</div>');
+                        $form.prepend('<div class="woocommerce-error">' + quicklook_wc_params.i18n_add_to_cart_error + '</div>');
                     }
                 },
                 complete: function() {

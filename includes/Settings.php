@@ -1,11 +1,11 @@
 <?php
 /**
- * Settings class for Quick View Product for WooCommerce
+ * Settings class for QuickLook for WooCommerce
  *
- * @package QuickLook
+ * @package QuickLookForWooCommerce
  */
 
-namespace QuickLook;
+namespace QuickLookForWooCommerce;
 
 /**
  * Class to manage plugin settings
@@ -16,7 +16,7 @@ class Settings implements Settings_Interface {
 	 *
 	 * @var string
 	 */
-	private $option_key = 'qvpwc_settings';
+	private $option_key = 'quicklook_wc_settings';
 
 	/**
 	 * Default settings
@@ -45,7 +45,7 @@ class Settings implements Settings_Interface {
 	 * @return array Modified sections.
 	 */
 	public function add_section( $sections ) {
-		$sections['qvpwc'] = __( 'Quick View', 'quicklook' );
+		$sections['quicklook_wc'] = __( 'Quick View', 'quicklook-for-woocommerce' );
 		return $sections;
 	}
 
@@ -58,49 +58,49 @@ class Settings implements Settings_Interface {
 	 */
 	public function add_settings( $settings, $current_section ) {
 		// Check if we're in our section
-		if ( 'qvpwc' !== $current_section ) {
+		if ( 'quicklook_wc' !== $current_section ) {
 			return $settings;
 		}
 
 		$quick_view_settings = array(
 			array(
-				'title' => __( 'Quick View Settings', 'quicklook' ),
+				'title' => __( 'Quick View Settings', 'quicklook-for-woocommerce' ),
 				'type'  => 'title',
-				'desc'  => __( 'Configure the Quick View button and modal display.', 'quicklook' ),
-				'id'    => 'qvpwc_options',
+				'desc'  => __( 'Configure the Quick View button and modal display.', 'quicklook-for-woocommerce' ),
+				'id'    => 'quicklook_wc_options',
 			),
 			array(
-				'title'   => __( 'Enable/Disable', 'quicklook' ),
-				'desc'    => __( 'Enable Quick View functionality', 'quicklook' ),
-				'id'      => 'qvpwc_enabled',
+				'title'   => __( 'Enable/Disable', 'quicklook-for-woocommerce' ),
+				'desc'    => __( 'Enable Quick View functionality', 'quicklook-for-woocommerce' ),
+				'id'      => 'quicklook_wc_enabled',
 				'default' => 'yes',
 				'type'    => 'checkbox',
 			),
 			array(
-				'title'    => __( 'Button Text', 'quicklook' ),
-				'desc'     => __( 'Text displayed on the Quick View button', 'quicklook' ),
-				'id'       => 'qvpwc_button_text',
+				'title'    => __( 'Button Text', 'quicklook-for-woocommerce' ),
+				'desc'     => __( 'Text displayed on the Quick View button', 'quicklook-for-woocommerce' ),
+				'id'       => 'quicklook_wc_button_text',
 				'default'  => 'Quick View',
 				'type'     => 'text',
 				'desc_tip' => true,
 			),
 			array(
-				'title'    => __( 'Button Position', 'quicklook' ),
-				'desc'     => __( 'Where to display the Quick View button', 'quicklook' ),
-				'id'       => 'qvpwc_button_position',
+				'title'    => __( 'Button Position', 'quicklook-for-woocommerce' ),
+				'desc'     => __( 'Where to display the Quick View button', 'quicklook-for-woocommerce' ),
+				'id'       => 'quicklook_wc_button_position',
 				'default'  => 'after_add_to_cart',
 				'type'     => 'select',
 				'options'  => array(
-					'after_title'       => __( 'After product title', 'quicklook' ),
-					'after_price'       => __( 'After product price', 'quicklook' ),
-					'after_add_to_cart' => __( 'After add to cart button', 'quicklook' ),
-					'before_add_to_cart' => __( 'Before add to cart button', 'quicklook' ),
+					'after_title'       => __( 'After product title', 'quicklook-for-woocommerce' ),
+					'after_price'       => __( 'After product price', 'quicklook-for-woocommerce' ),
+					'after_add_to_cart' => __( 'After add to cart button', 'quicklook-for-woocommerce' ),
+					'before_add_to_cart' => __( 'Before add to cart button', 'quicklook-for-woocommerce' ),
 				),
 				'desc_tip' => true,
 			),
 			array(
 				'type' => 'sectionend',
-				'id'   => 'qvpwc_options',
+				'id'   => 'quicklook_wc_options',
 			),
 		);
 
@@ -125,7 +125,7 @@ class Settings implements Settings_Interface {
 	 * @return mixed The setting value
 	 */
 	public function get_setting( $key, $default = null ) {
-		$option_key = 'qvpwc_' . $key;
+		$option_key = 'quicklook_wc_' . $key;
 		$value = get_option( $option_key, null );
 
 		// If the option doesn't exist, use default
@@ -136,7 +136,7 @@ class Settings implements Settings_Interface {
 			}
 
 			// Allow filtering of default values
-			return apply_filters( 'qvpwc_default_' . $key, $default );
+			return apply_filters( 'quicklook_wc_default_' . $key, $default );
 		}
 
 		return $value;
