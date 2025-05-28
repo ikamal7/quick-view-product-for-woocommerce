@@ -2,9 +2,9 @@
 Contributors: ikamal
 Donate link: https://kamalhosen.com
 Tags: woocommerce, quick view, product, popup, modal
-Requires at least: 6.7
-Tested up to: 6.9
-Stable tag: 1.0.0
+Requires at least: 5.4
+Tested up to: 6.8
+Stable tag: 1.0.1
 Requires PHP: 7.4
 WC requires at least: 9.0
 WC tested up to: 9.9
@@ -67,6 +67,9 @@ Yes, you can add custom CSS to your theme to override the default styles.
 3. Settings page
 
 == Changelog ==
+
+= 1.0.1 =
+* Plugin Rename
 
 = 1.0.0 =
 * Initial release
