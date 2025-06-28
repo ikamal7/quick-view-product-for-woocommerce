@@ -3,7 +3,7 @@
  * Plugin Name: QuickLook for WooCommerce
  * Plugin URI: https://kamalhosen.com/plugins/quicklook-for-woocommerce
  * Description: A lightweight plugin adding a Quick View button to WooCommerce product listings, showing a popup with product details.
- * Version: 1.0.1
+ * Version: 1.0.2
  * Author: Kamal Hosen
  * Author URI: https://kamalhosen.com
  * Text Domain: quicklook-for-woocommerce
@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 // Define plugin constants.
-define( 'QUICKLOOK_WC_VERSION', '1.0.1' );
+define( 'QUICKLOOK_WC_VERSION', '1.0.2' );
 define( 'QUICKLOOK_WC_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'QUICKLOOK_WC_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'QUICKLOOK_WC_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
@@ -36,10 +36,14 @@ define( 'QUICKLOOK_WC_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
  */
 require_once QUICKLOOK_WC_PLUGIN_DIR . 'autoloader.php';
 
+
+
 /**
  * Initialize the plugin
  */
 function quicklook_wc_init() {
+
+	add_action( 'before_woocommerce_init', 'quicklook_wc_hpos_compatibility' );
 	// Initialize plugin components with dependency injection.
 	$settings = new QuickLookForWooCommerce\Settings();
 	$ajax_handler = new QuickLookForWooCommerce\Ajax_Handler( $settings );
@@ -53,3 +57,9 @@ function quicklook_wc_init() {
 
 // Hook into WordPress init to start the plugin.
 add_action( 'plugins_loaded', 'quicklook_wc_init' );
+
+function quicklook_wc_hpos_compatibility() {
+	if ( class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
+		\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
+	}
+}

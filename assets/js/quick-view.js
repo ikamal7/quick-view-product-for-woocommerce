@@ -57,7 +57,7 @@
                 url: quicklook_wc_params.ajax_url,
                 type: 'POST',
                 data: {
-                    action: 'quicklook-wc_quick_view',
+                    action: 'quicklook_wc_quick_view',
                     product_id: productId,
                     nonce: nonce
                 },

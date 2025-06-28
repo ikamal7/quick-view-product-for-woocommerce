@@ -315,8 +315,6 @@
 
 /* Product Actions */
 .quicklook-wc-product-actions {
-    display: flex;
-    gap: 15px;
     margin-top: 25px;
 }
 

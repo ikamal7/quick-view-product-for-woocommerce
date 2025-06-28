@@ -31,3 +31,4 @@ node_modules/
 
 # composer vendor dir
 vendor/
+.DS_Store
