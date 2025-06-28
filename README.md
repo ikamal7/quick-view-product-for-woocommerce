@@ -1,8 +1,8 @@
 # QuickLook - Quick View Product For WooCommerce
 
-[![WordPress Plugin Version](https://img.shields.io/wordpress/plugin/v/quick-view-product-for-woocommerce.svg)](https://wordpress.org/plugins/quicklook/)
-[![WordPress Compatibility](https://img.shields.io/wordpress/v/quick-view-product-for-woocommerce.svg)](https://wordpress.org/plugins/quicklook/)
-[![WooCommerce Compatibility](https://img.shields.io/badge/WooCommerce-9.0+-purple.svg)](https://wordpress.org/plugins/quicklook/)
+[![WordPress Plugin Version](https://img.shields.io/wordpress/plugin/v/quick-view-product-for-woocommerce.svg)](https://wordpress.org/plugins//)
+[![WordPress Compatibility](https://img.shields.io/wordpress/v/quicklook-for-woocommerce.svg)](https://wordpress.org/plugins/quicklook-for-woocommerce/)
+[![WooCommerce Compatibility](https://img.shields.io/badge/WooCommerce-9.0+-purple.svg)](https://wordpress.org/plugins/quicklook-for-woocommerce/)
 
 A lightweight plugin adding a Quick View button to WooCommerce product listings, showing a popup with product details.
 
